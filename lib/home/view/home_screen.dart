@@ -41,12 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (context, vm, _) {
             switch (vm.status) {
 
-              case HomeStatus.loading:
+              case HomeStatusEnum.loading:
                 return const Center(
                   child: CircularProgressIndicator.adaptive(valueColor: AlwaysStoppedAnimation<Color>(Colors.green),strokeWidth: 1,),
                 );
 
-              case HomeStatus.noInternet:
+              case HomeStatusEnum.noInternet:
                 return Center(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
 
-              case HomeStatus.apiError:
+              case HomeStatusEnum.apiError:
                 return Center(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
 
-              case HomeStatus.success:
+              case HomeStatusEnum.success:
                 final categories = vm.menuModel?.categories ?? [];
 
                 if (categories.isEmpty) {
@@ -104,13 +104,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 );
 
-              case HomeStatus.initial:
+              case HomeStatusEnum.initial:
               return const SizedBox.shrink();
             }
           },
         ),
       ),
-
     );
   }
 }

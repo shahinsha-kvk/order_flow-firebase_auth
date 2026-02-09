@@ -27,16 +27,16 @@ class HomeViewModel extends ChangeNotifier {
   final HomeRepository _repo = HomeRepository();
   MenuModel? menuModel;
   String? errorMessage;
-  HomeStatus status = HomeStatus.initial;
+  HomeStatusEnum status = HomeStatusEnum.initial;
 
   Future<void> loadMenu() async {
-    status = HomeStatus.loading;
+    status = HomeStatusEnum.loading;
     errorMessage = null;
     notifyListeners();
 
     final hasInternet = await checkInternet();
     if (!hasInternet) {
-      status = HomeStatus.noInternet;
+      status = HomeStatusEnum.noInternet;
       errorMessage = 'No internet connection. Please try again.';
       notifyListeners();
       return;
@@ -44,12 +44,12 @@ class HomeViewModel extends ChangeNotifier {
 
     try {
       menuModel = await _repo.fetchMenu();
-      status = HomeStatus.success;
+      status = HomeStatusEnum.success;
     } on ApiException catch (e) {
-      status = HomeStatus.apiError;
+      status = HomeStatusEnum.apiError;
       errorMessage = e.message;
     } catch (e) {
-      status = HomeStatus.apiError;
+      status = HomeStatusEnum.apiError;
       errorMessage = 'Something went wrong. Please try again.';
     }
     notifyListeners();

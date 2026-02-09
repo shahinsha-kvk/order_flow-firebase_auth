@@ -66,7 +66,6 @@ class AuthViewModel extends ChangeNotifier {
     }
   }
 
-
 //sent otp
   Future<bool> sendOtp(String phone) async {
     _setLoading(true);

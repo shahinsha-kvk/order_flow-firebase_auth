@@ -47,11 +47,7 @@ class OtpScreen extends StatelessWidget {
                     }
 
                     final firebaseUser = FirebaseAuth.instance.currentUser;
-                    final userName =
-                        firebaseUser?.displayName ??
-                            firebaseUser?.email ??
-                            firebaseUser?.phoneNumber ??
-                            'User';
+                    final userName = firebaseUser?.displayName ?? firebaseUser?.email ?? firebaseUser?.phoneNumber ?? 'User';
                     Get.offNamed('/Home');
                     Themes.showSuccessSnackBar(msg: 'Welcome $userName 👋',);
                   },

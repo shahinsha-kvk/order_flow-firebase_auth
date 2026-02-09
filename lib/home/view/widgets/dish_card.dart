@@ -38,11 +38,7 @@ class DishTile extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        dish.name,
-                        style: const TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w500),
-                      ),
+                      Text(dish.name, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),),
 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,9 +52,7 @@ class DishTile extends StatelessWidget {
 
                       Text(
                         dish.description,
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey.shade600),
+                        style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                       ),
 
                       SizedBox(height: getHeight(context: context) * 0.01),
@@ -97,9 +91,7 @@ class DishTile extends StatelessWidget {
                           padding: EdgeInsets.only(top: 6),
                           child: Text(
                             'Customizations Available',
-                            style: TextStyle(
-                                color: Colors.red,
-                                fontSize: 12),
+                            style: TextStyle(color: Colors.red, fontSize: 12),
                           ),
                         ),
                     ],

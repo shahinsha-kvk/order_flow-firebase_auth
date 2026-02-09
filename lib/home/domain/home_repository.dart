@@ -12,9 +12,7 @@ class HomeRepository {
     if (response.statusCode == 200) {
       return menuModelFromMap(response.body);
     } else {
-      throw ApiException(
-        'Server error (${response.statusCode}). Please try again later.',
-      );
+      throw ApiException('Server error (${response.statusCode}). Please try again later.',);
     }
   }
 }

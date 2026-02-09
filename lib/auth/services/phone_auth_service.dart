@@ -33,8 +33,7 @@ class PhoneAuthService {
       smsCode: otp,
     );
 
-    final result =
-    await _auth.signInWithCredential(credential);
+    final result = await _auth.signInWithCredential(credential);
 
     return result.user;
   }

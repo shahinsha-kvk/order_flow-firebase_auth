@@ -1,4 +1,5 @@
 class AppUser {
+
   final String uid;
   final String? phone;
   final String? email;

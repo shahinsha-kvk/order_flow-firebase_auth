@@ -7,6 +7,7 @@ import '../home/view/home_screen.dart';
 
 List<GetPage<dynamic>> getPages() {
   return[
+
     GetPage(
       name: '/Login',
       page: () => LoginScreen(),
