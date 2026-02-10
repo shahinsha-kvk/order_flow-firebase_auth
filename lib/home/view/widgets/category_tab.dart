@@ -20,7 +20,7 @@ class CategoryTabs extends StatelessWidget {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
-        separatorBuilder: (_, _) => const SizedBox(width: 1),
+        separatorBuilder: (_, _) => const SizedBox(width: 10),
         itemBuilder: (context, index) {
           final isSelected = index == vm.selectedCategoryIndex;
 
@@ -45,6 +45,7 @@ class CategoryTabs extends StatelessWidget {
                   color: isSelected ? Colors.red : Colors.black,
                   fontWeight:
                   isSelected ? FontWeight.bold : FontWeight.normal,
+                  fontSize: getWidth(context: context)*0.04,
                 ),
               ),
             ),

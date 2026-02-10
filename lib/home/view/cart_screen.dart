@@ -16,7 +16,7 @@ class CartScreen extends StatelessWidget {
         surfaceTintColor: AppColors.bgWhite,
         title: Text('Order Summary',
           style:  TextStyle(
-          fontSize: 16,
+          fontSize: getWidth(context: context)*0.045,
           color: AppColors.subGrey,
           fontWeight: FontWeight.w500,
         ),
@@ -62,8 +62,9 @@ class CartScreen extends StatelessWidget {
                         child: Center(
                           child: Text(
                             '${cartItems.length} Dishes - ${vm.totalCount} Items',
-                            style: const TextStyle(
+                            style: TextStyle(
                                 color: Colors.white,
+                                fontSize: getWidth(context: context)*0.04,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -71,7 +72,7 @@ class CartScreen extends StatelessWidget {
 
                       Expanded(
                         child: ListView.separated(
-                          padding: const EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(10),
                           itemCount: cartItems.length,
                           separatorBuilder: (_, _) => const Divider(
                             height: 24,
@@ -118,25 +119,25 @@ class CartScreen extends StatelessWidget {
                                         dish.name,
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(
+                                        style:  TextStyle(
                                           fontWeight: FontWeight.w600,
-                                          fontSize: 12,
+                                          fontSize: getWidth(context: context)*0.04,
                                         ),
                                       ),
                                       verticalSpaceTiny,
                                       Text('INR ${dish.price}',
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 12,
+                                        fontSize: getWidth(context: context)*0.03,
                                       ),),
                                       verticalSpaceTiny,
                                       Text(
                                         '${dish.calories} calories',
-                                        style: const TextStyle(
-                                          fontSize: 11,
-                                          color: Colors.grey,
+                                        style:  TextStyle(
+                                          fontSize: getWidth(context: context)*0.035,                                          color: Colors.grey,
                                         ),
                                       ),
+                                      verticalSpaceMedium
                                     ],
                                   ),
                                 ),
@@ -145,9 +146,9 @@ class CartScreen extends StatelessWidget {
                                   flex: 4,
                                   child: Center(
                                     child: Container(
-                                      height: 34,
+                                      height:  getHeight(context: context) * 0.05,
                                       padding:
-                                      const EdgeInsets.symmetric(horizontal: 8),
+                                       EdgeInsets.symmetric(horizontal: getWidth(context: context)*0.04,),
                                       decoration: BoxDecoration(
                                         color: Colors.green.shade900,
                                         borderRadius: BorderRadius.circular(20),
@@ -157,20 +158,21 @@ class CartScreen extends StatelessWidget {
                                         children: [
                                           InkWell(
                                             onTap: () => vm.decrement(dish.id),
-                                            child: const Icon(Icons.remove,
-                                                color: Colors.white, size: 14),
+                                            child: Icon(Icons.remove,
+                                                color: Colors.white, size: getWidth(context: context)*0.04,)
                                           ),
                                           horizontalSpaceSmall,
                                           Text(
                                             qty.toString(),
-                                            style: const TextStyle(
-                                                fontSize: 12, color: Colors.white),
+                                            style:  TextStyle(
+                                                fontSize: getWidth(context: context)*0.04,
+                                                color: Colors.white),
                                           ),
                                           horizontalSpaceSmall,
                                           InkWell(
                                             onTap: () => vm.increment(dish.id),
-                                            child: const Icon(Icons.add,
-                                                color: Colors.white, size: 14),
+                                            child:  Icon(Icons.add,
+                                                color: Colors.white, size: getWidth(context: context)*0.04,)
                                           ),
                                         ],
                                       ),
@@ -184,8 +186,8 @@ class CartScreen extends StatelessWidget {
                                     alignment: Alignment.centerRight,
                                     child: Text(
                                       'INR $totalPrice',
-                                      style: const TextStyle(
-                                        fontSize: 12,
+                                      style:  TextStyle(
+                                        fontSize: getWidth(context: context)*0.035,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -207,17 +209,17 @@ class CartScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
+                            Text(
                               'Total Amount',
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: getWidth(context: context)*0.05,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                             Text(
                               'INR ${totalAmount.toStringAsFixed(2)}',
-                              style: const TextStyle(
-                                fontSize: 16,
+                              style: TextStyle(
+                                fontSize: getWidth(context: context)*0.04,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.green,
                               ),
@@ -248,9 +250,9 @@ class CartScreen extends StatelessWidget {
                       Navigator.pop(context);
                       vm.refresh();
                     },
-                    child: const Text(
+                    child: Text(
                       'Place Order',
-                      style: TextStyle(fontSize: 16, color: Colors.white,
+                      style: TextStyle(fontSize: getWidth(context: context)*0.05, color: Colors.white,
                       ),
                     ),
                   ),

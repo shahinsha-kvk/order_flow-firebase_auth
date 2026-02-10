@@ -38,13 +38,13 @@ class DishTile extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(dish.name, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),),
+                      Text(dish.name, style:  TextStyle(fontSize: getWidth(context: context)*0.04, fontWeight: FontWeight.w500),),
 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('₹ ${dish.price}'),
-                          Text('${dish.calories} calories'),
+                          Text('₹ ${dish.price}',style: TextStyle(fontSize: getWidth(context: context)*0.035,)),
+                          Text('${dish.calories} calories',style: TextStyle(fontSize: getWidth(context: context)*0.035,)),
                         ],
                       ),
 
@@ -52,13 +52,14 @@ class DishTile extends StatelessWidget {
 
                       Text(
                         dish.description,
-                        style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                        style: TextStyle(fontSize: getWidth(context: context)*0.03, color: Colors.grey.shade600),
                       ),
 
                       SizedBox(height: getHeight(context: context) * 0.01),
 
                       Container(
-                        height: getHeight(context: context) * 0.05,
+                        width: getWidth(context: context) * 0.32,
+                        height: getWidth(context: context) * 0.1,
                         decoration: BoxDecoration(
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(30),
@@ -68,17 +69,17 @@ class DishTile extends StatelessWidget {
                           children: [
                             IconButton(
                               padding: EdgeInsets.zero,
-                              icon: const Icon(Icons.remove, color: Colors.white, size: 15),
+                              icon:  Icon(Icons.remove, color: Colors.white, size: getWidth(context: context)*0.04),
                               onPressed: () =>
                                   vm.decrement(dish.id),
                             ),
                             Text(
                               qty.toString(),
-                              style: const TextStyle(fontSize: 12, color: Colors.white),
+                              style:  TextStyle(fontSize: getWidth(context: context)*0.04, color: Colors.white),
                             ),
                             IconButton(
                               padding: EdgeInsets.zero,
-                              icon: const Icon(Icons.add, color: Colors.white, size: 15),
+                              icon:  Icon(Icons.add, color: Colors.white, size: getWidth(context: context)*0.04),
                               onPressed: () =>
                                   vm.increment(dish.id),
                             ),
@@ -87,11 +88,11 @@ class DishTile extends StatelessWidget {
                       ),
 
                       if (dish.customizationsAvailable)
-                        const Padding(
+                         Padding(
                           padding: EdgeInsets.only(top: 6),
                           child: Text(
                             'Customizations Available',
-                            style: TextStyle(color: Colors.red, fontSize: 12),
+                            style: TextStyle(color: Colors.red, fontSize: getWidth(context: context)*0.04),
                           ),
                         ),
                     ],

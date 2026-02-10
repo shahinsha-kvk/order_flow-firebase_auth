@@ -18,6 +18,7 @@ class AppDrawer extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser;
 
     return Drawer(
+      width: getWidth(context: context) * 0.95,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.zero,
       ),

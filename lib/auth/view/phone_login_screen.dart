@@ -62,9 +62,8 @@ class PhoneLoginScreen extends StatelessWidget {
                         Themes.showSnackBarError(msg: vm.uiSnackBarMessage ?? 'Something went wrong',);
                         return;
                       }
-                      Get.toNamed('/Otp');
+                      Get.offAllNamed('/Otp');
                     },
-
                   ),
                 ],
               ),

@@ -34,7 +34,7 @@ class OtpScreen extends StatelessWidget {
 
                 CustomAuthButton(
                   label: 'Verify OTP',
-                  assetImagePath: 'assets/icons/phone-logo1.png',
+                  assetImagePath: 'assets/icons/message-icon.png',
                   bgColor: AppColors.buttonBlue,
                   onTap: vm.isLoading
                       ? null

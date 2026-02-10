@@ -18,37 +18,35 @@ class CustomAuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        if (onTap != null) {
-          onTap!();
-        }
-      },
+      onTap: onTap,
       child: Container(
         width: getWidth(context: context) * 0.8,
-        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 24),
+        padding: const EdgeInsets.symmetric(vertical: 18),
         margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 24),
         decoration: BoxDecoration(
           color: bgColor,
           borderRadius: BorderRadius.circular(60),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
+        child: Stack(
+          alignment: Alignment.center,
           children: [
-            Image.asset(
-              assetImagePath,
-              width: 24,
-              height: 24,
+            // Left icon
+            Positioned(
+              left: 24,
+              child: Image.asset(
+                assetImagePath,
+                width: 24,
+                height: 24,
+              ),
             ),
-            Expanded(
-              child: Center(
-                child: Text(
-                  label,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+
+            // Perfectly centered text
+            Text(
+              label,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ],

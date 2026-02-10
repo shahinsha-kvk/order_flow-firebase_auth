@@ -11,7 +11,6 @@ class AuthViewModel extends ChangeNotifier {
   final PhoneAuthService _phoneService = PhoneAuthService();
 
   AppUser? user;
-  bool isLoading = false;
   String? error;
   String? _verificationId;
 
@@ -46,7 +45,7 @@ class AuthViewModel extends ChangeNotifier {
 
   //google login
   Future<bool> loginWithGoogle() async {
-    _setLoading(true);
+    setLoading(true);
 
     try {
       final firebaseUser = await _googleService.signInWithGoogle();
@@ -61,19 +60,17 @@ class AuthViewModel extends ChangeNotifier {
       return false;
     } catch (e) {
       uiSnackBarMessage = 'Login failed';
-      _setLoading(false);
+      setLoading(false);
       return false;
     }
   }
 
 //sent otp
   Future<bool> sendOtp(String phone) async {
-    _setLoading(true);
-    log('sendOtp VM');
-
+    setLoading(true);
     if (!await _ensureInternet()) {
       uiSnackBarMessage = 'No internet. Please check your network connection.';
-      _setLoading(false);
+      setLoading(false);
       return false;
     }
 
@@ -88,12 +85,10 @@ class AuthViewModel extends ChangeNotifier {
         },
       );
 
-      _setLoading(false);
       return true;
     } catch (e) {
-      error = e.toString();
-      uiSnackBarMessage = error;
-      _setLoading(false);
+      uiSnackBarMessage = e.toString();
+      setLoading(false);
       return false;
     }
   }
@@ -106,11 +101,11 @@ class AuthViewModel extends ChangeNotifier {
     }
 
     log('verifyOtp VM');
-    _setLoading(true);
+    setLoading(true);
 
     if (!await _ensureInternet()) {
       uiSnackBarMessage = 'No internet. Please check your network connection.';
-      _setLoading(false);
+      setLoading(false);
       return false;
     }
 
@@ -127,17 +122,17 @@ class AuthViewModel extends ChangeNotifier {
           email: firebaseUser.email,
         );
 
-        _setLoading(false);
+        setLoading(false);
         return true;
       }
 
       uiSnackBarMessage = 'Invalid OTP';
-      _setLoading(false);
+      setLoading(false);
       return false;
     } catch (e) {
       error = e.toString();
       uiSnackBarMessage = 'OTP verification failed';
-      _setLoading(false);
+      setLoading(false);
       return false;
     }
   }
@@ -145,12 +140,12 @@ class AuthViewModel extends ChangeNotifier {
 //log out
   Future<bool> logout() async {
     log('logout progress');
-    _setLoading(true);
+    setLoading(true);
     log('message');
 
     if (!await _ensureInternet()) {
       uiSnackBarMessage = 'No internet. Please check your network connection.';
-      _setLoading(false);
+      setLoading(false);
       return false;
     }
 
@@ -163,17 +158,17 @@ class AuthViewModel extends ChangeNotifier {
       user = null;
       error = null;
       _verificationId = null;
-      _setLoading(false);
+      setLoading(false);
       return true;
     } catch (e) {
       log('logout error: $e');
       uiSnackBarMessage = 'Logout failed. Please try again.';
-      _setLoading(false);
+      setLoading(false);
       return false;
     }
   }
-
-  void _setLoading(bool value) {
+  bool isLoading = false;
+  void setLoading(bool value) {
     isLoading = value;
     notifyListeners();
   }
